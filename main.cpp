@@ -7,22 +7,20 @@ using namespace std;
 class Person
 {
 public:
-    Person()
+    // Konstruktor
+    Person() 
     {
         string vorname;
         string nachname;
     }
-
-    void setVorname(string vorname)
+    void setVorname(string vorname) 
     {
         this->vorname = vorname;
     }
-
     void setNachname(string nachname)
     {
         this->nachname = nachname;
     }
-    //get
     string getVorname()
     {
         return vorname;
@@ -31,6 +29,7 @@ public:
     {
         return nachname;
     }
+    
 private:
     string nachname;
     string vorname;
@@ -80,23 +79,44 @@ Person savePerson(Person p1)
     return p1;
 }
 
+Person clearPerson(Person p1)
+{
+    cout << "Person p1 Cleared" << endl;
+    p1.setVorname("");
+    p1.setNachname("");
+    return p1;
+}
+
 int main()
 {
-    // Load Person
+    // Person
     Person p1;
     Person p2;
 
-    // Save Person
+    // Set Person
     p1.setVorname("Max");
     p1.setNachname("Mustermann");
+    
+    // Save Person
     savePerson(p1);
+
     // Print Person
+    cout << "Person 1" << endl;
     printPerson(p1);
+
+    // Clear Person
+    p1 = clearPerson(p1);
+
+    // Print Person
+    cout << "Person 1" << endl;
+    printPerson(p1);
+
+
     // Load Person
     p2 = loadPerson(p1);
+    
     // Print Person
     printPerson(p2);
-
 
     return 0;
 }
